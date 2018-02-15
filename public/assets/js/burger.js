@@ -3,11 +3,9 @@ $(function() {
   $(".change-devoured").on("click", function(event) {
     var id = $(this).data("id");
     var newDevoured = $(this).data("newdevoured");
-
     var newDevouredState = {
       devoured: newDevoured
     };
-
     // Send the PUT request.
     $.ajax("/api/burgers/" + id, {
       type: "PUT",
@@ -20,16 +18,12 @@ $(function() {
       }
     );
   });
-
   $(".create-form").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
-
     var newBurger = {
       name: $("#brgr").val().trim(),
-      // devoured: $("[name=devoured]").val().trim()
     };
-
     // Send the POST request.
     $.ajax("/api/burgers/", {
       type: "POST",
@@ -42,10 +36,8 @@ $(function() {
       }
     );
   });
-
   $(".delete-burger").on("click", function(event) {
     var id = $(this).data("id");
-
     // Send the DELETE request.
     $.ajax("/api/burgers/" + id, {
       type: "DELETE",

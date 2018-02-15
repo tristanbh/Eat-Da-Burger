@@ -1,51 +1,52 @@
-<h1>Burgers</h1>
 
-<h2>Burgers to be devoured</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-    <form method="PUT" action="/api/burgers/{{id}}?_method=PUT" class="form-inline">
-    <div class="change-devoured">
-      <input type="hidden" name="devoured" value="true"/>
-      <label class="sr-only">Burger</label>
-      <p class="form-control-static">{{burger_name}}</p>
-    </div>
-    </form>
-      {{> burgers/burger-block devoured=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Burgers that are Devoured</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-     <form method="DELETE" action="/api/burgers/{{id}}?_method=DELETE" class="form-inline">
-     <div class="form-group">
-       <label class="sr-only">Devoured Burger</label>
-       <p class="form-control-static">{{burger_name}}</p>
-     </div>
-     <button id="id{{id}}" type="submit" class="btn btn-default">Delete</button>
-     </form>
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="brgr">Burger Type:</label>
-    <input type="text" id="brgr" name="burger_name">
+<div class ="row">
+  <div class="col-12">
+    <center>
+      <img src="/assets/images/eatburgertitle.svg" width="80%">
+    </center>
   </div>
-
-  {{!-- <div class="form-group">
-    <label for="slee">Devoured</label><br>
-    <input type="radio" name="devoured" value="1" checked> Not yet devoured<br>
-    <input type="radio" name="devoured" value="0"> Already Devoured
-  </div> --}}
-
-  <button type="submit">Add Burger</button>
-</form>
+  <div class="col-sm-12 col-md-6">
+    <center>
+    <img src="/assets/images/burgerstitle.svg" width="80%">
+    <ul id="burger-text">
+        {{#each burgers}}
+          {{#unless devoured}}
+           <center><img src="/assets/images/burger.svg" width="20%" id="burger-text">
+          <form method="PUT" action="/api/burgers/{{id}}?_method=PUT" class="form-inline" id="burger-text"></center>
+          <div class="change-devoured">
+            <input type="hidden" name="devoured" value="true"/>
+            <label class="sr-only">Burger</label>
+            <p class="form-control-static">{{burger_name}}</p>
+          </div>
+          </form>
+            {{> burgers/burger-block devoured=true}}
+          {{/unless}}
+        {{/each}}</center>
+  </ul>
+</div>
+  <div class="col-sm-12 col-md-6">
+    <center>
+    <img src="/assets/images/devouredtitle.svg" width="80%">
+    </center>
+    <ul id="burger-text">
+      {{#each burgers}}
+        {{#if devoured}}
+          <label class="sr-only">Devoured Burger</label>
+          <p class="form-control-static">{{id}}. {{burger_name}}</p>
+        </form>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+<div class="col-12">
+  <center>
+    <img src="/assets/images/addaburger.svg" width="70%">
+    <form class="create-form">
+    <div class="form-group">
+      <label for="brgr" id="burger-text">Burger Type:</label>
+      <input type="text" id="brgr" name="burger_name">
+      <button type="submit">Add Burger</button>
+    </form>
+    </div>
+  </center>
+</div>
